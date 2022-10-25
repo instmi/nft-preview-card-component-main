@@ -135,6 +135,9 @@ p {
   color: var(--white);
   text-decoration: none;
 }
+.information > span > a:hover {
+  color: var(--cyan);
+}
 .information > img {
   border: 1px solid var(--white);
   border-radius: 15px;

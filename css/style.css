@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
+
+:root {
+  --main-bg: hsl(217, 54%, 11%);
+  --card-bg: hsl(216, 50%, 16%);
+  --line: hsl(215, 32%, 27%);
+  --white: hsl(0, 0%, 100%);
+
+  --cyan: hsl(178, 100%, 50%);
+  --soft-blue: hsl(215, 51%, 70%);
+
+  --font-family: 'Outfit', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--main-bg);
+  display: grid;
+  font-family: var(--font-family);
+  height: 100vh;
+  place-content: center;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border-radius: 14px;
+  display: grid;
+  grid-template-areas: 
+  "image image"
+  "title title"
+  "description description"
+  "currency time"
+  "information information";
+  padding: 24px;
+  width: 300px;
+}
+
+.overlay {
+  background: var(--cyan);
+  border-radius: 7px;
+  display: grid;
+  grid-template-areas: "main";
+  grid-area: image;
+  place-items: center;
+  overflow: hidden;
+}
+.overlay > * {
+  grid-area: main;
+}
+.overlay > .overlay_icon {
+  z-index: 0;
+}
+.overlay:hover, .overlay:focus > .eye-icon {
+  z-index: 1;
+}
+.overlay_img {
+  transition: 0.9s ease;
+  z-index: 1;
+}
+.overlay_img:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+h1 {
+  color: var(--white);
+  font-size: 18px;
+  grid-area: title;
+  padding: 16px 0;
+}
+h1:hover {
+  color: var(--cyan);
+  cursor: pointer;
+}
+
+p {
+  color: var(--soft-blue);
+  font-size: 15px;
+  font-weight: 300;
+  grid-area: description;
+  line-height: 24px;
+}
+
+.currency {
+  color: var(--cyan);
+  font-weight: 400;
+  grid-area: currency;
+}
+.currency::before {
+  content: url('../images/icon-ethereum.svg');
+  margin-right: 8px;
+}
+.time {
+  color: var(--soft-blue);
+  grid-area: time;
+  justify-self: end;
+}
+.time::before {
+  content: url('../images/icon-clock.svg');
+  display: inline-block;
+  left: -24px;
+  margin-right: 8px;
+  position: absolute;
+  top: 18px;
+}
+.currency, .time {
+  padding: 16px 0;
+  position: relative;
+}
+
+.information {
+  color: var(--soft-blue);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  grid-area: information;
+  padding-top: 16px;
+}
+.information > span {
+  margin-left: 10px;
+}
+.information > span > a {
+  color: var(--white);
+  text-decoration: none;
+}
+.information > img {
+  border: 1px solid var(--white);
+  border-radius: 15px;
+  width: 30px;
+}
